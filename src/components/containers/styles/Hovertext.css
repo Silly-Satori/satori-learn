@@ -1,0 +1,26 @@
+.hovertext-container {
+    position: relative;
+    display: inline-block;
+  }
+  
+  .hovertext-child {
+    display: inline-block;
+  }
+  
+  .hovertext-overlay {
+    
+    position: absolute;
+    top: 24px; /* Adjust the position of the overlay box */
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: var(--secondary);
+    color: var(--text);
+    padding: 2px 4px; /* Adjust the padding for a wider box */
+    border-radius: 6px;
+    font-size: 14px;
+    opacity: 1;
+    z-index: 1;
+    white-space: nowrap;
+    min-width: 150px; /* Set a minimum width for the box */
+  }
+  

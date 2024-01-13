@@ -1,0 +1,60 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Variables */
+
+:root {
+    --text: #ffffff;
+    --bg: #06021d;
+    --primary: #91aa09;
+    --secondary: #033f0c;
+    --secondarydark: #012006;
+    --accent: #d3f31b;
+    --primarycontrast: #64d97b;
+    --secondarycontrast: #64d97b;
+    --accentcontrast: #64d97b;
+    --textcontrast: #64d97b;
+    --bgcontrast: #64d97b;
+    --shadow: #010101;
+    --inverttext: #010101;
+}
+
+body {
+    margin: 0;
+    background-color: var(--bg);
+    color: var(--text);
+
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto",
+        "Oxygen", "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans",
+        "Helvetica Neue", sans-serif;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+}
+
+code {
+    font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+        monospace;
+}
+
+/* ===== Scrollbar CSS ===== */
+/* Firefox */
+* {
+    scrollbar-width: auto;
+    scrollbar-color: var(--secondarydark) rgba(0, 0, 0, 0.4);
+}
+
+/* Chrome, Edge, and Safari */
+*::-webkit-scrollbar {
+    width: 8px;
+}
+
+*::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.45);
+}
+
+*::-webkit-scrollbar-thumb {
+    background-color: var(--secondarydark);
+    border-radius: 5px;
+    border: 0px solid var(--bg);
+}

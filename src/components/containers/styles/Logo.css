@@ -1,0 +1,27 @@
+
+/* Styles for the logo image */
+.logo-img {
+    transition: filter 0.3s ease-in-out;
+}
+
+
+
+/* Keyframes for the sweep animation */
+@keyframes sweep {
+    0% {
+        filter: invert(0); /* Start with no inversion (normal colors) */
+    }
+    100% {
+        filter: invert(1); /* End with full inversion (colors inverted) */
+    }
+}
+
+/* Keyframes for the unsweep animation (hover removed) */
+@keyframes unsweep {
+    0% {
+        filter: invert(1); /* Start with full inversion (colors inverted) */
+    }
+    100% {
+        filter: invert(0); /* End with no inversion (normal colors) */
+    }
+}
