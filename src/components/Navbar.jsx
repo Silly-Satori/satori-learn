@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ToggleButton from "./containers/ToggleTheme";
 import Underlined from "./containers/Underlined";
+import Links from "../Links";
 import {useGoogleLogin, googleLogout } from "@react-oauth/google";
 import LogoComponent from "./containers/LogoComponent";
 import axios from "axios";
@@ -18,8 +19,13 @@ const Navbar = () => {
     };
 
     const login = useGoogleLogin({
-        onSuccess: (codeResponse) => setUser(codeResponse),
+        onSuccess: (codeResponse) => {
+            console.log(codeResponse);
+            setUser(codeResponse);
+        },
         onError: (error) => console.log("Login Failed:", error),
+        //flow: "auth-code",
+        offline: true,
     });
 
     const logOut = () => {
@@ -31,7 +37,7 @@ const Navbar = () => {
         if (user) {
             axios
                 .get(
-                    `https://www.googleapis.com/oauth2/v1/userinfo?access_token=${user.access_token}`,
+                    `https://www.googleapis.com/oauth2/v3/userinfo?access_token=${user.access_token}`,
                     {
                         headers: {
                             Authorization: `Bearer ${user.access_token}`,
@@ -41,6 +47,7 @@ const Navbar = () => {
                 )
                 .then((res) => {
                     setProfile(res.data);
+                    console.log(res.data)
                 })
                 .catch((err) => console.log(err));
         }
@@ -71,9 +78,14 @@ const Navbar = () => {
                 </div>
 
                 <div className="hidden md:flex">
-                    <button className="text-text font-semibold mr-4">
+                    {
+                    profile ? <div className="flex items-center">
+                        <img src={profile.picture} alt="user image" className="rounded-full h-10 w-10" />
+                        </div> :
+                    <button className="text-text font-semibold mr-4" onClick={() => login()}>
                         Login
                     </button>
+}
                     <ToggleButton
                         text={
                             <i class="fa-solid fa-circle-half-stroke fa-flip-horizontal fa-xl"></i>
