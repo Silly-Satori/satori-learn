@@ -62,7 +62,7 @@ const Navbar = () => {
 
     let classNames = "text-text font-semibold mb-2 text-right";
     return (
-        <nav className="bg-primary p-4 transition duration-200 ease-in-out">
+        <nav className="bg-bg-contrast p-4 transition duration-200 ease-in-out">
             <div className="flex items-center justify-between">
                 <div className="flex items-center">
                     <div className="text-text mr-4 font-bold">
