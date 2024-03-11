@@ -16,6 +16,7 @@ function Navbar() {
       <button className="signup">SignUp</button>
     </div>
   );
+}
 /*
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
