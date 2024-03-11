@@ -16,7 +16,7 @@ const LightDarkModeToggle = (props) => {
         "--bg": "#04101A",
         "--primary": "#1EFBD6",
         "--secondary": "#E0AA1F",
-        "--accent": "#38FF98",
+        "--accent": "#26F2FF",
         "--bgcontrast": "#071928",
         "--shadow": "#010101",
         "--inverttext": "#010101",

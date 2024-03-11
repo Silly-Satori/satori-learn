@@ -12,8 +12,8 @@ function Logo() {
         <NavLink to="/" className="logo-container">
             <img
                 src={logoSrc}
-                alt="Satori Logo"
-                className="h-8 logo-img transition-all duration-300 hover:-translate-y-1 scale-110"
+                alt="Lyte CDN"
+                className="h-8 logo-img transition-all duration-300 hover:-translate-y-1"
             />
         </NavLink>
     );
