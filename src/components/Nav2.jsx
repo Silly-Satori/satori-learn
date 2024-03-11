@@ -18,15 +18,12 @@ const Navbar = () => {
         setIsExpanded(!isExpanded);
     };
 
-    const login = useGoogleLogin({
-        onSuccess: (codeResponse) => {
-            console.log(codeResponse);
-            setUser(codeResponse);
-        },
-        onError: (error) => console.log("Login Failed:", error),
-        //flow: "auth-code",
-        offline: true,
-    });
+    const login = () => {
+        let auth_link = Links.backend + "/auth/login";
+        console.log(auth_link);
+        // redirect 
+        window.location.href = auth_link;
+    }
 
     const logOut = () => {
         googleLogout();
