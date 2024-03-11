@@ -12,17 +12,12 @@ const LightDarkModeToggle = (props) => {
     let texttouse = props.text;
 
     let darkModeVariables = {
-        "--text": "#ffffff",
-        "--bg": "#06021d",
-        "--primary": "#91aa09",
-        "--secondary": "#033f0c",
-        "--secondarydark": "#012006",
-        "--accent": "#d3f31b",
-        "--primarycontrast": "#64d97b",
-        "--secondarycontrast": "#64d97b",
-        "--accentcontrast": "#64d97b",
-        "--textcontrast": "#64d97b",
-        "--bgcontrast": "#64d97b",
+        "--text": "#E0EFFB",
+        "--bg": "#04101A",
+        "--primary": "#1EFBD6",
+        "--secondary": "#E0AA1F",
+        "--accent": "#38FF98",
+        "--bgcontrast": "#071928",
         "--shadow": "#010101",
         "--inverttext": "#010101",
     };
