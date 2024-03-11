@@ -1,3 +1,22 @@
+import React from "react";
+import "./styles/Navbar.css";
+
+function Navbar() {
+  return (
+    <div className="nav">
+      <img src="/assets/satori-logo.png" className="logo" />
+
+      <input className="input" placeholder="Learn what you like" />
+      <div className="nav-compo">
+        <a >Courses</a>
+        <a>About</a>
+      </div>
+
+      <button className="login">Login</button>
+      <button className="signup">SignUp</button>
+    </div>
+  );
+/*
 import React, { useState, useEffect } from "react";
 import { NavLink } from "react-router-dom";
 import ToggleButton from "./containers/ToggleTheme";
@@ -82,57 +101,7 @@ const Navbar = () => {
                     <button className="text-text font-semibold mr-4" onClick={() => login()}>
                         Login
                     </button>
-}
-                    <ToggleButton
-                        text={
-                            <i class="fa-solid fa-circle-half-stroke fa-flip-horizontal fa-xl"></i>
-                        }
-                    />
-                </div>
 
-                <div className="md:hidden">
-                    <button
-                        className="fa-solid fa-bars mx-2 fa-2xl ml-3"
-                        onClick={toggleNavbar}
-                    ></button>
-                </div>
-            </div>
+}*/
 
-            <div className={`md:hidden ${isExpanded ? "block" : "hidden"}`}>
-                <div className="flex flex-col mt-4">
-                    <div className="text-text font-semibold mb-2 text-right">
-                    </div>
-                    <div className="flex justify-end">
-                        <ToggleButton
-                            text={
-                                <>
-                                    <i class="fa-solid fa-circle-half-stroke fa-flip-horizontal fa-xl"></i>
-                                    <span className="ml-2">Toggle Theme</span>
-                                </>
-                            }
-                        />
-                    </div>
-                    <div className="flex justify-end">
-                        {profile ? (
-                            <div>
-                                <img src={profile.picture} alt="user image" />
-                                <h3>User Logged in</h3>
-                                <p>Name: {profile.name}</p>
-                                <p>Email Address: {profile.email}</p>
-                                <br />
-                                <br />
-                                <button onClick={logOut}>Log out</button>
-                            </div>
-                        ) : (
-                            <button onClick={() => login()}>
-                                Sign in with Google 🚀{" "}
-                            </button>
-                        )}
-                    </div>
-                </div>
-            </div>
-        </nav>
-    );
-};
-
-export { Navbar };
+export {Navbar};
