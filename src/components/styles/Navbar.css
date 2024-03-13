@@ -111,6 +111,8 @@ gap: 20px;
     border: 2px solid #AFAFAF;
     border-radius: 16px;
     margin-left: 20px;
+    background-color: var(--bg);
+    text-align: center;
 }
 .login{
     border: 2px solid var(--green);
