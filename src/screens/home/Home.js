@@ -25,6 +25,7 @@ function Home() {
                     className="hero-img h-[40vh] lg:w-1/2 lg:h-auto w-full object-contain lg:translate-x-10"
                 />
             </div>
+            {/** home page main comes here */}
             <ToggleTheme />
             <Footer />
 

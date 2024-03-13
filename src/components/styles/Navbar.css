@@ -74,7 +74,7 @@ body{
     cursor: pointer;
 }
 /* navbar */
-.nav {
+/* .nav {
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -84,7 +84,7 @@ body{
     z-index: 1;
     width: 100%;
     height: 80px;
-}
+} */
 .logo{
     display: flex;
     align-items: center;

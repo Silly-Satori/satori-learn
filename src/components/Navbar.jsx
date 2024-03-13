@@ -1,19 +1,35 @@
 import React from "react";
 import "./styles/Navbar.css";
+import Dropdown from 'react-bootstrap/Dropdown';
+import Button from "react-bootstrap/esm/Button";
 
 function Navbar() {
   return (
-    <div className="nav">
-      <img src="/assets/satori-logo.png" className="logo" />
+    <div className="flex justify-between items-center bg-nav py-4 px-8 m-0 z-1 w-full h-20">
+      <img src="/assets/satori-logo.png" className="flex items-center justify-center max-w-70 w-[228px]" />
 
-      <input className="input" placeholder="Learn what you like" />
-      <div className="nav-compo">
+      <input className="input md:flex hidden" placeholder="Learn what you like" />
+       <div className=" nav-compo sm:justify-evenly "> {/*nav Compo */}
         <a >Courses</a>
         <a>About</a>
       </div>
 
-      <button className="login">Login</button>
-      <button className="signup">SignUp</button>
+      {/* <div className="hidden md:flex">
+        <Dropdown >
+          <Dropdown.Toggle variant="success" id="dropdown-basic" className="">
+            <Button className="login">Drop</Button>
+          </Dropdown.Toggle>
+
+          <Dropdown.Menu>
+            <Dropdown.Item href="#/courses">Courses</Dropdown.Item>
+            <Dropdown.Item href="#/about">About</Dropdown.Item>
+            <Dropdown.Item href="#/login">Login</Dropdown.Item>
+          </Dropdown.Menu>
+        </Dropdown>
+      </div> */}
+
+      <button className="login hidden md:flex">Login</button>
+
     </div>
   );
 }
