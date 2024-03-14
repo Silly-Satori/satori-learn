@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         "primary": "var(--primary)",
         "secondary": "var(--secondary)",
-        "bg": "var(--bg)",
+        // "bg": "var(--bg)",
         "text": "var(--text)",
         "accent": "var(--accent)",
         "primary-contrast": "var(--primarycontrast)",
@@ -19,6 +19,8 @@ module.exports = {
         "shadow": "var(--shadow)",
         "secondary-dark": "var(--secondarydark)",
         "invert-text": "var(--inverttext)",
+        "nav": "var(--nav)",
+        "bg": "var(--bg)",
       },
     },
   },

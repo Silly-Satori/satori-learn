@@ -3,10 +3,11 @@ import "./styles/Navbar.css";
 import Dropdown from 'react-bootstrap/Dropdown';
 import Button from "react-bootstrap/esm/Button";
 
+
 function Navbar() {
   return (
     <div className="flex justify-between items-center bg-nav py-4 px-8 m-0 z-1 w-full h-20">
-      <img src="/assets/satori-logo.png" className="flex items-center justify-center max-w-70 w-[228px]" />
+      <img src="/assets/home/satori-logo.png" className="flex items-center justify-center max-w-70 w-[228px]" />
 
       <input className="input md:flex hidden bg-nav" placeholder="Learn what you like" />
        <div className=" nav-compo sm:justify-evenly "> {/*nav Compo */}

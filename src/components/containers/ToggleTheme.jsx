@@ -71,7 +71,7 @@ const LightDarkModeToggle = (props) => {
         <div className="">
             <Button
                 onClick={toggleTheme}
-                stylevar="bg-secondary font-semibold text-text hover:bg-text hover:text-invert-text p-2 rounded transition duration-500 ease-in-out"
+                stylevar="bg-nav font-semibold text-text hover:bg-text hover:text-invert-text p-2 rounded transition duration-500 ease-in-out"
                 text={texttouse}
             />
         </div>

@@ -6,7 +6,7 @@
 
 :root {
     --text: #ffffff;
-    --bg: #06021d;
+    /* --bg: #06021d; */
     --primary: #91aa09;
     --secondary: #033f0c;
     --secondarydark: #012006;
@@ -111,7 +111,7 @@ gap: 20px;
     border: 2px solid #AFAFAF;
     border-radius: 16px;
     margin-left: 20px;
-    background-color: var(--bg);
+    /* background-color: var(--bg); */
     text-align: center;
 }
 .login{
@@ -129,7 +129,7 @@ gap: 20px;
     background-color: var(--green);
     color: white;
 }
-.signup:hover{
+/* .signup:hover{
     background-color: var(--bg);
     color: var(--green);
 }
@@ -142,4 +142,4 @@ gap: 20px;
     display: flex;
     align-items: center;
     color: white;
-}
+} */
