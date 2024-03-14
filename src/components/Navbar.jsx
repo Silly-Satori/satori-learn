@@ -36,7 +36,7 @@ function Navbar() {
                 <div className="flex flex-row items-center gap-3 ml-5 -mr-5">
                     <Button
                         text="Login"
-                        stylevar="font-semibold text-primary bg-[#00000000] hover:bg-primary hover:text-bg p-2 rounded transition duration-500 ease-in-out border-2 border-primary py-2 rounded-[16px] hover:shadow-md"
+                        stylevar="font-semibold text-primary bg-[#00000000] hover:bg-primary hover:text-bg p-2 rounded transition duration-500 ease-in-out border-2 border-primary py-2 rounded-[16px] hover:shadow-md hover:text-white"
                         onClick={() => {
                             alert("Login");
                         }}
