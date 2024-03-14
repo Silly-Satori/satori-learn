@@ -45,13 +45,13 @@ function Home() {
 
     <div className="homebtn flex justify-center relative z-20 items-center bottom-4 ">
     <button className="homebt" onClick={()=>{
-        window.scrollTo({top:getTopPosition(scroll1.current) ,behavior: "smooth"})
+        window.scrollTo({top:getTopPosition(scroll1.current ) - 100,behavior: "smooth"})
     }}>WHO WE ARE</button>
     <button className="homebt" onClick={()=>{
-         window.scrollTo({top:getTopPosition(scroll2.current) ,behavior: "smooth"})
+         window.scrollTo({top:getTopPosition(scroll2.current) - 100,behavior: "smooth"})
     }}>WHAT ARE WE GIVING</button>
     <button className="homebt" onClick={()=>{
-        window.scrollTo({top:getTopPosition(scroll3.current) ,behavior: "smooth"})
+        window.scrollTo({top:getTopPosition(scroll3.current) - 50,behavior: "smooth"})
     }}>OUR GOALS</button>
         </div>
 
