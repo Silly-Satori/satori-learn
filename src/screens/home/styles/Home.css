@@ -13,6 +13,11 @@
     /* position: relative; */
     background-color: var(--bg);
 }
+.homebt:hover{
+    background-color: var(--secondary);
+    color: white;
+
+}
 #section::before {
     content: "";
     display: block;
