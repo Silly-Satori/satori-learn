@@ -1,38 +1,73 @@
 import React from "react";
-import "./styles/Navbar.css";
-import Dropdown from 'react-bootstrap/Dropdown';
-import Button from "react-bootstrap/esm/Button";
-
+//import "./styles/Navbar.css";
+import { useState, useEffect } from "react";
+import Button from "./containers/Button";
+import LogoComponent from "./containers/LogoComponent";
+import { NavLinkUnderlined } from "./containers/NavLinkUnderline";
 
 function Navbar() {
-  return (
-    <div className="flex justify-between items-center bg-nav py-4 px-8 m-0 z-1 w-full h-20 z-40 fixed">
-      <img src="/assets/home/satori-logo.png" className="flex items-center justify-center max-w-70 w-[228px]" />
+    const [isExpanded, setIsExpanded] = useState(false);
+    const [user, setUser] = useState(null);
+    const [profile, setProfile] = useState(null);
 
-      <input className="input md:flex hidden bg-nav" placeholder="Learn what you like" />
-       <div className=" nav-compo sm:justify-evenly "> {/*nav Compo */}
-        <a >Courses</a>
-        <a>About</a>
-      </div>
+    const toggleNavbar = () => {
+        setIsExpanded(!isExpanded);
+    };
 
-      {/* <div className="hidden md:flex">
-        <Dropdown >
-          <Dropdown.Toggle variant="success" id="dropdown-basic" className="">
-            <Button className="login">Drop</Button>
-          </Dropdown.Toggle>
+    return (
+        <nav className="bg-bg-contrast transition duration-200 ease-in-out">
+            <div className="flex justify-between items-center py-4 px-8 m-0 z-1 w-full h-20 bg-bg-contrast text-[#E0EFFB]">
+                <LogoComponent />
 
-          <Dropdown.Menu>
-            <Dropdown.Item href="#/courses">Courses</Dropdown.Item>
-            <Dropdown.Item href="#/about">About</Dropdown.Item>
-            <Dropdown.Item href="#/login">Login</Dropdown.Item>
-          </Dropdown.Menu>
-        </Dropdown>
-      </div> */}
+                {/* <input className="input lg:flex hidden bg-nav " placeholder="Learn what you like" /> */}
+                <input
+                    className="h-10 w-1/2 hidden md:flex border-text border-2 bg-[#a0a0a000] rounded-[16px] px-4 py-6"
+                    placeholder="Learn what you like"
+                />
+                <div className="items-center justify-between gap-auto space-x-5 hidden lg:flex">
+                    <NavLinkUnderlined to="/courses" text="Courses">
+                        Courses
+                    </NavLinkUnderlined>
+                    <NavLinkUnderlined to="/about" text="About">
+                        About
+                    </NavLinkUnderlined>
+                </div>
 
-      <button className="login hidden md:flex">Login</button>
-
-    </div>
-  );
+                <div className="flex flex-row items-center gap-3 ml-5 -mr-5">
+                    <Button
+                        text="Login"
+                        stylevar="font-semibold text-primary bg-[#00000000] hover:bg-primary hover:text-bg p-2 rounded transition duration-500 ease-in-out border-2 border-primary py-2 rounded-[16px] hover:shadow-md"
+                        onClick={() => {
+                            alert("Login");
+                        }}
+                    />
+                    <div className="lg:hidden">
+                        <button
+                            className="fa-solid fa-bars mx-2 fa-2xl ml-2 text-text"
+                            onClick={toggleNavbar}
+                        ></button>
+                    </div>
+                </div>
+            </div>
+            <div className={`lg:hidden ${isExpanded ? "block" : "hidden"} bg-bg-contrast`}>
+                <div className="flex flex-col mt-4 pb-3">
+                    <div className="text-text font-semibold mb-2 text-right space-y-3 pr-5">
+                        <div className="inline-flex flex-col">
+                    <NavLinkUnderlined to="/courses" text="Courses">
+                            Courses
+                        </NavLinkUnderlined>
+                        <NavLinkUnderlined to="/about" text="About">
+                            About
+                        </NavLinkUnderlined>
+                        </div>
+                    </div>
+                    <div className="flex justify-end">
+                        
+                    </div>
+                </div>
+            </div>
+        </nav>
+    );
 }
 /*
 import React, { useState, useEffect } from "react";
@@ -122,4 +157,4 @@ const Navbar = () => {
 
 }*/
 
-export {Navbar};
+export { Navbar };

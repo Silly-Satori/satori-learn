@@ -92,13 +92,7 @@ body{
     max-height: 70px;
     width: 228px;
 }
-.nav-compo{
-    display: flex;
-    align-items: center;
-    justify-content: space-evenly;
-    width: 200px;
-    height:17px;
-}
+
 /* .nav-buttons{
 width: 250px;
 height: 38px;
