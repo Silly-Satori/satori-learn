@@ -8,7 +8,7 @@ import { CiLocationArrow1, CiMail,  CiPhone,CiLocationOn } from "react-icons/ci"
 
 function Footer() {
     return (
-        <footer className="bg-nav h-auto flex-col">
+        <footer className="bg-nav h-auto flex-col sm:">
             <div className="flex ">
             <div className="left flex-col p-4 pb-8">
                 <img src="/assets/home/satori-logo.png"/>
@@ -21,7 +21,7 @@ function Footer() {
                     <RiFacebookFill className="text-xl mr-4"/>
                 </div>
             </div>
-            <div className="right flex-row ">
+            <div className="right flex-col lg:flex-row  ">
                 <span className="contact text-secondary px-7">Contact us</span>
                 <CiMail className="symbol text-secondary relative top-[6px] mx-2.5"/>satori.learn@satori.org
                 <CiPhone className="text-secondary relative top-[5px] mx-2.5"/>+91 1234567890
