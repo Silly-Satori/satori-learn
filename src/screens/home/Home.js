@@ -26,7 +26,16 @@ function Home() {
       </div>
 
       {/** home page main comes here */}
-      <div>{/* will prolly put a scroll bar here */}</div>
+      <div className="relative">{/* will prolly put a scroll bar here */}
+      <hr className="border border-secondary  w-full absolute "/>
+
+      <div className="homebtn flex justify-center relative z-20 items-center bottom-4 ">
+      <button className="homebt ">WHO WE ARE</button>
+      <button className="homebt ">WHAT ARE WE GIVING</button>
+      <button className="homebt">OUR GOALS</button>
+        </div>
+
+      </div>
       <div className="main mx-28">
        
         {/* main content comes here*/}
