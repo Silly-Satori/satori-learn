@@ -19,8 +19,6 @@ module.exports = {
         "shadow": "var(--shadow)",
         "secondary-dark": "var(--secondarydark)",
         "invert-text": "var(--inverttext)",
-        "nav": "var(--nav)",
-        "bg": "var(--bg)",
       },
     },
   },
