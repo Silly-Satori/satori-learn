@@ -6,7 +6,7 @@ import Button from "react-bootstrap/esm/Button";
 
 function Navbar() {
   return (
-    <div className="flex justify-between items-center bg-nav py-4 px-8 m-0 z-1 w-full h-20">
+    <div className="flex justify-between items-center bg-nav py-4 px-8 m-0 z-1 w-full h-20 z-40 fixed">
       <img src="/assets/home/satori-logo.png" className="flex items-center justify-center max-w-70 w-[228px]" />
 
       <input className="input md:flex hidden bg-nav" placeholder="Learn what you like" />

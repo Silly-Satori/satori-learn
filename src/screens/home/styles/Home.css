@@ -1,3 +1,15 @@
 :root {
     scroll-behavior: smooth;
 }
+.homebt{
+    border: 2px solid var(--secondary);
+    height: 38px;
+    padding: 10px 10px 10px 10px;
+    margin-right: 12px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    color: var(--secondary);
+    /* position: relative; */
+    background-color: var(--bg);
+}
