@@ -13,3 +13,9 @@
     /* position: relative; */
     background-color: var(--bg);
 }
+#section::before {
+    content: "";
+    display: block;
+    height: 15px;
+    scroll-margin-block-start: 50px;
+  }
