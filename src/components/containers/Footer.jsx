@@ -2,6 +2,7 @@ import React from "react";
 import { Link } from "react-router-dom";
 import "../../App.css";
 import "../containers/styles/footer.css";
+import LogoComponent from "./LogoComponent";
 import { FaInstagram } from "react-icons/fa";
 import {
     RiInstagramFill,
@@ -19,21 +20,23 @@ import {
 
 function Footer() {
     return (
-        <footer className="bg-bg-contrast h-auto flex-col sm:">
-            <div className="flex ">
-                <div className="left flex-col p-4 pb-8 items-center">
-                    <img src="/assets/home/satori-logo.png" />
-                    <span className=" tag p-6 ">Subscribe to our channel</span>
-                    <div className="logo text-secondary pt-2 flex flex-row items-center">
+        <footer className="bg-bg-contrast h-auto flex-col">
+            <div className="flex flex-col sm:flex-row items-center">
+                <div className="flex-col flex sm:p-4 pt-5 items-center">
+                    <LogoComponent />
+                    <span className=" tag p-3 whitespace-nowrap ">Learn, Sleep (Optional), Repeat</span>
+                    <div className="logo text-secondary pt-2 pb-5 flex flex-row items-center">
                         <RiInstagramFill className="text-xl mr-4" />
                         <RiTwitterFill className="text-xl mr-4" />
                         <RiLinkedinFill className="text-xl mr-4" />
                         <RiYoutubeFill className="insta mr-4" />
-                        <RiFacebookFill className="text-xl mr-4" />
+                        <RiFacebookFill className="text-xl" />
                     </div>
                 </div>
-                <div className="right flex-col lg:flex-row ">
-                    <span className="contact text-secondary px-7 text-bold">
+                {/*automatic gap to align the elements to right, -10 px gap*/}
+                <div className="flex-grow -mr-10 sm:mr-0"></div>
+                <div className="flex flex-col lg:flex-row items-center sm:items-start mx-6">
+                    <span className="contact text-secondary text-bold">
                         Contact us
                     </span>
                     <div className="flex flex-row items-center align-middle px-2">
@@ -44,13 +47,13 @@ function Footer() {
                     <CiPhone className="text-secondary relative mr-2" />
                         <p>(+91)1234567890</p>
                     </div>
-                    <div className="flex flex-row items-center align-middle px-2">
+                    <div className="flex flex-row items-center align-middle">
                     <CiLocationOn className="text-secondary relative mr-2" />
                         <p>123, Satori Lane, Satori City, Satori Country</p>
                     </div>
                 </div>
             </div>
-            <hr className="border border-secondary w-3/4 mx-36" />
+            <hr className="border border-secondary mx-6 sm:mx-24 lg:mx-36 items-center my-4"/>
             <div className="bottom flex justify-evenly items-center mt-2.5 mb-2.5">
                 <span>© 2024 </span>
                 <span>All Rights Reserved</span>
