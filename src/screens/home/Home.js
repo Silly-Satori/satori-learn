@@ -67,7 +67,7 @@ function Home() {
           </div>
         </div>
         <div className="block2 flex flex-row-reverse justify-center items-center" id="section" ref={scroll2}>
-          <div className="flex flex-col lg:flex-row">
+          <div className="flex flex-col lg:flex-row-reverse">
             <span>we offer a wide range of courses covering diverse topics, including business, technology, arts, language, health, and much more. Whether you're a beginner or an expert, there's something for everyone here. Our courses are designed to be engaging, interactive, and practical, ensuring that you not only learn but also apply what you learn in real-world situations.</span>
             <img src="/assets/home/image.png" className="max-h-[450px] object-contain" />
           </div>
