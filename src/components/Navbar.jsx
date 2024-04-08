@@ -62,7 +62,7 @@ function Navbar() {
                             }}
                         >
                             <img
-                                src={user.picture}
+                                src={(String(user.picture).split("="))[0]}
                                 alt="user image"
                                 className="rounded-full h-10 w-10"
                             />

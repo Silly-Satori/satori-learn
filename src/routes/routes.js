@@ -4,6 +4,7 @@ import { Navbar } from "../components/Navbar";
 import Home from "../screens/home/Home";
 import NotFound from "../screens/404";
 import AuthPage from "../screens/Auth";
+import Course from "../screens/course/Course";
 
 export const router = createBrowserRouter([
     {
@@ -26,6 +27,15 @@ export const router = createBrowserRouter([
         path: "/auth/:var",
         element: [
             <AuthPage />
+        ]
+    }, 
+    {
+        path: "/courses",
+        element: [
+            <Navbar />,
+            <Routes>
+                <Route path="/" element={<Course />} />
+            </Routes>
         ]
     }
 ]);
