@@ -69,7 +69,7 @@ const Course = () => {
                         <h2 className='font-bold'>{course.name}</h2>
                         <p>{course.description}</p>
                         <p className='text-secondary'>Price: ${course.price}</p>
-                        <button className='bought rounded-lg bg-primary border px-2 py-1 font-medium text-bg-contrast m-2'>                        
+                        <button className='bought rounded-lg bg-primary border hover:bg-bg-contrast  px-2 py-1 font-medium text-bg-contrast m-2'>                        
                         <p>{course.bought ?  'Bought' : 'Buy Now'}</p>
                         </button>
                         <div className="tags">

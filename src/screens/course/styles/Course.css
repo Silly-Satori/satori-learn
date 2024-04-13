@@ -4,8 +4,8 @@
     transition: 0.2s;
 }
 .bought:hover{
-    background-color: rgb(0, 153, 255);
-    border-color: rgb(0, 153, 255);
+   color: white;
+    border-color: var(--primary-color);
     transition: 0.3s;
 }
 .course{
