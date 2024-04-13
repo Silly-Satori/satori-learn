@@ -10,7 +10,7 @@
     --primary: #91aa09;
     --secondary: #033f0c;
     --secondarydark: #012006;
-    --accent: #d3f31b;
+    --accent: #879923;
     --primarycontrast: #64d97b;
     --secondarycontrast: #64d97b;
     --accentcontrast: #64d97b;
@@ -22,8 +22,6 @@
     --nav: #071928;
     --bg:#04101A;
     --green:rgba(132, 255, 203, 1);
-
-
 }
 
 body {

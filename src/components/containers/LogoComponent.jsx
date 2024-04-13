@@ -13,7 +13,7 @@ function Logo() {
             <img
                 src={logoSrc}
                 alt="Lyte CDN"
-                className="h-16 logo-img transition-all duration-300 hover:-translate-y-1"
+                className="h-16 logo-img"
             />
         </NavLink>
     );

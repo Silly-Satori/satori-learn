@@ -40,9 +40,11 @@ function Navbar() {
 
                 {/* <input className="input lg:flex hidden bg-nav " placeholder="Learn what you </div>like" /> */}
                 <input
-                    className="h</NavLinkUnderlined>-10 w-1/2 h-14 hidden md:flex border-text border-2 bg-[#a0a0a000] rounded-[16px] px-4 py-6"
+                 className="h</NavLinkUnderlined>-10 w-1/2 h-14 hidden md:flex border-text border-2 bg-[#a0a0a000] rounded-[16px] px-4 py-6 text-text font-semibold focus:outline-none hover:border-primary transition duration-500 ease-in-out hover:shadow-md hover:bg-[#00000030]"
+
                     placeholder="Learn what you like"
                 />
+                
                 <div className="items-center justify-between gap-auto space-x-5 hidden lg:flex">
                     <NavLinkUnderlined to="/courses" text="Courses">
                         Courses
