@@ -61,9 +61,9 @@ const Course = () => {
             <div className="course-header text-3xl font-bold flex items-center justify-start p-5">
                 Courses
             </div>
-            <div className="course-list grid gap-7 mx-12  grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
+            <div className="course-list  grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
                 {courses.map((course, index) => (
-                    <div key={index} className="course-card p-4 hover:border-secondary-contrast hover:border-bg-primary-contrast rounded-lg shadow-lg font-light text-center border w-64 mx-2 my-2 m md:w-72 px-5 pb-5">
+                    <div key={index} className="course-card p-4 hover:border-secondary-contrast hover:border-bg-primary-contrast rounded-lg shadow-lg font-light text-center border w-64  mx-2 my-2  md:w-72 px-5 pb-5">
                         {/* <img src={`/assets/courses/${course.authorImage}`} alt={course.name} /> */}
                         <img src={image} alt={course.name} />
                         <h2 className='font-bold'>{course.name}</h2>
