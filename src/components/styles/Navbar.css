@@ -93,6 +93,9 @@ body{
     width: 228px;
 }
 
+.logo:hover{
+    scale : 1.1;
+}
 /* .nav-buttons{
 width: 250px;
 height: 38px;

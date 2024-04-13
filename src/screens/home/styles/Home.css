@@ -16,6 +16,7 @@
 .homebt:hover{
     background-color: var(--secondary);
     color: white;
+    transition : 0.5s;
 
 }
 #section::before {

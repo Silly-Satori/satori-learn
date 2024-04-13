@@ -1,0 +1,13 @@
+
+.course-card:hover{
+    transform: scale(1.06);
+    transition: 0.2s;
+}
+.bought:hover{
+    background-color: rgb(0, 153, 255);
+    border-color: rgb(0, 153, 255);
+    transition: 0.3s;
+}
+.course{
+    margin-bottom:40px;
+}
