@@ -40,7 +40,7 @@ function Navbar() {
 
                 {/* <input className="input lg:flex hidden bg-nav " placeholder="Learn what you </div>like" /> */}
                 <input
-                    className="h</NavLinkUnderlined>-10 w-1/2 hidden md:flex border-text border-2 bg-[#a0a0a000] rounded-[16px] px-4 py-6"
+                    className="h</NavLinkUnderlined>-10 w-1/2 h-14 hidden md:flex border-text border-2 bg-[#a0a0a000] rounded-[16px] px-4 py-6"
                     placeholder="Learn what you like"
                 />
                 <div className="items-center justify-between gap-auto space-x-5 hidden lg:flex">
