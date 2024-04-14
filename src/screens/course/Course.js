@@ -4,9 +4,11 @@ import axios from "axios";
 import "./styles/Course.css";
 import Pagination from './Pagination';
 
+//actual courses we will be using from the backend
 const Course = () => {
     const [courses, setCourses] = useState([]);
     const [currentPage, setCurrentPage] = useState(1);
+    //change the coursesPerPage to whatever you want, I set as 2 just for testing and due to less courses
     const [coursesPerPage] = useState(2); 
 
     useEffect(() => {
@@ -27,11 +29,67 @@ const Course = () => {
     const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
 
     const paginate = (pageNumber) => setCurrentPage(pageNumber);
+    
+    //old test courses
+const courses1 = [
+    {
+        name: "React Js Course",
+        price: 19.99,
+        bought: true,
+        authorImage: "undraw_next_js_-8-g5m.svg",
+        description:
+            "lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+    {
+        name: "Course 2",
+        price: 29.99,
+        bought: false,
+        authorImage: "author2.jpg",
+        description:
+            "lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        tags: ["tag4", "tag5", "tag6"],
+    },
+    {
+        name: "JavaScript Course",
+        price: 29.99,
+        bought: true,
+        authorImage: "author2.jpg",
+        description: "loremsit amet, consectetur adipiscing elit",
+        tags: ["tag4", "tag5", "tag6"],
+    },
+    {
+        name: "React Js Course",
+        price: 19.99,
+        bought: false,
+        authorImage: "undraw_next_js_-8-g5m.svg",
+        description:
+            "lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+    {
+        name: "React Js Course",
+        price: 19.99,
+        bought: true,
+        authorImage: "undraw_next_js_-8-g5m.svg",
+        description:
+            "lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+    {
+        name: "React Js Course",
+        price: 19.99,
+        bought: false,
+        authorImage: "undraw_next_js_-8-g5m.svg",
+        description:
+            "lorem ipsum dolor sit amet, consectetur adipiscing elit",
+        tags: ["tag1", "tag2", "tag3"],
+    },
+    // Add more courses here
+];
+const style = { style: { backgroundColour: "var(--bg-contrast)" } };
 
-    
-    
-    
-    
+
     return (
         <div className="course flex flex-col items-center justify-center">
             <div className="course-header text-3xl font-bold flex items-center justify-start p-5">
@@ -69,3 +127,6 @@ const Course = () => {
 };
 
 export default Course;
+
+
+
