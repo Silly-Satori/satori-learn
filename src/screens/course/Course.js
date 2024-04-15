@@ -84,11 +84,6 @@ const Course = () => {
                 totalCourses={courses.length}
                 paginate={paginate}
             />
-            <Pagination
-                coursesPerPage={coursesPerPage}
-                totalCourses={courses.length}
-                paginate={paginate}
-            />
         </div>
     );
 };
