@@ -1,11 +1,11 @@
 import React, { useContext } from "react";
 import { NavLink } from "react-router-dom";
 import { ThemeContext } from "../../context/ThemeContext";
+import logo from "../../../assets/logo-pd.svg";
 import "./styles/Logo.css"; // Import the CSS file for additional styles if needed
 
 function Logo() {
     const { theme } = useContext(ThemeContext);
-    let logo = "/assets/logo-pd.svg";
     const logoSrc = theme === "dark" ? logo : logo;
 
     return (

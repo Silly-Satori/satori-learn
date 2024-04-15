@@ -26,7 +26,11 @@ function Navbar() {
                     })
                     .then((res) => {
                         // get the image data from the res.picture url
-                        let imgdata = fetch(res.data.picture).then((res) =>
+                        let imgdata = fetch(res.data.picture, {
+                            method: "GET",
+                            
+                        }
+                        ).then((res) =>
                             res.blob()
                         ).then((blob) => {
                             let url = URL.createObjectURL(blob);
