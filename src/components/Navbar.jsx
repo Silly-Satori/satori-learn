@@ -25,7 +25,14 @@ function Navbar() {
                         token: session,
                     })
                     .then((res) => {
-                        setUser(res.data);
+                        // get the image data from the res.picture url
+                        let imgdata = fetch(res.data.picture).then((res) =>
+                            res.blob()
+                        ).then((blob) => {
+                            let url = URL.createObjectURL(blob);
+                            res.data.picture = url;
+                            setUser(res.data);
+                        });
                     });
             }
             console.log(user);

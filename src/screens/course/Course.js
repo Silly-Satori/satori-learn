@@ -8,19 +8,37 @@ const Course = () => {
     const [courses, setCourses] = useState([]);
 
     useEffect(() => {
-        axios.get(`http://localhost:8000/courses/fetch/0`).then((res) => {
-
-            setCourses(res.data);
-            let copy = [...res.data];
-            let i = 0;
-            copy.forEach((course) => {
-                course.authorImage = "undraw_next_js_-8-g5m.svg";
-                course.tags = ["tag1", "tag2", "tag3"];
-                course.bought = (i++ % 2 === 0);
+        let purchased = [];
+        axios
+            .get(
+                `http://localhost:8000/user/user_data/courses?token=${localStorage.getItem(
+                    "session"
+                )}`
+            )
+            .then((res) => {
+                purchased = res.data;
+                console.log(purchased);
+            })
+            .then(() => {
+                axios
+                    .get(`http://localhost:8000/courses/fetch/0`)
+                    .then((res) => {
+                        let copy = [...res.data];
+                        console.log(copy);
+                        copy.forEach((course) => {
+                            course.authorImage = "undraw_next_js_-8-g5m.svg";
+                            course.tags = ["tag1", "tag2", "tag3"];
+                            
+                            if (purchased.includes(course._id)) {
+                                course.bought = true;
+                            } else {
+                                course.bought = false;
+                            }
+                        });
+                        setCourses(copy);
+                    });
             });
-        });
     }, []);
-
 
     const courses1 = [
         {
@@ -95,9 +113,9 @@ const Course = () => {
                         <img src={image} alt={course.name} />
                         <h2 className="font-bold">{course.name}</h2>
                         <p>{course.description}</p>
-                        <p className='text-secondary'>Price: ${course.price}</p>
-                        <button className='bought rounded-lg bg-primary border hover:bg-bg-contrast  px-2 py-1 font-medium text-bg-contrast m-2'>                        
-                        <p>{course.bought ?  'Bought' : 'Buy Now'}</p>
+                        <p className="text-secondary">Price: ${course.price}</p>
+                        <button className="bought rounded-lg bg-primary border hover:bg-bg-contrast  px-2 py-1 font-medium text-bg-contrast m-2">
+                            <p>{course.bought ? "Bought" : "Buy Now"}</p>
                         </button>
                         <div className="tags">
                             {course.tags.map((tag, index) => (
