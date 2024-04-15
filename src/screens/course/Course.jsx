@@ -1,56 +1,55 @@
-import React, { useEffect, useState } from "react";
-import image from "./images/undraw_react_re_g3ui.svg";
-import axios from "axios";
-import "./styles/Course.css";
-import Pagination from './Pagination';
+import React, { useEffect, useState } from 'react'
+import image from './images/undraw_react_re_g3ui.svg'
+import axios from 'axios'
+import './styles/Course.css'
+import Pagination from './Pagination'
 
 //actual courses we will be using from the backend
 const Course = () => {
-    const [courses, setCourses] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
+    const [courses, setCourses] = useState([])
+    const [currentPage, setCurrentPage] = useState(1)
     //change the coursesPerPage to whatever you want, I set as 2 just for testing and due to less courses
-    const [coursesPerPage] = useState(2); 
+    const [coursesPerPage] = useState(2)
 
     useEffect(() => {
-        let purchased = [];
+        let purchased = []
         axios
             .get(
                 `http://localhost:8000/user/user_data/courses?token=${localStorage.getItem(
-                    "session"
+                    'session'
                 )}`
             )
             .then((res) => {
-                purchased = res.data;
-                console.log(purchased);
+                purchased = res.data
+                console.log(purchased)
             })
             .then(() => {
                 axios
                     .get(`http://localhost:8000/courses/fetch/0`)
                     .then((res) => {
-                        let copy = [...res.data];
-                        console.log(copy);
+                        let copy = [...res.data]
+                        console.log(copy)
                         copy.forEach((course) => {
-                            course.authorImage = "undraw_next_js_-8-g5m.svg";
-                            course.tags = ["tag1", "tag2", "tag3"];
-                            
+                            course.authorImage = 'undraw_next_js_-8-g5m.svg'
+                            course.tags = ['tag1', 'tag2', 'tag3']
+
                             if (purchased.includes(course._id)) {
-                                course.bought = true;
+                                course.bought = true
                             } else {
-                                course.bought = false;
+                                course.bought = false
                             }
-                        });
-                        setCourses(copy);
-                    });
-            });
-    }, []);
+                        })
+                        setCourses(copy)
+                    })
+            })
+    }, [])
 
-    const indexOfLastCourse = currentPage * coursesPerPage;
-    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
-    const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
+    const indexOfLastCourse = currentPage * coursesPerPage
+    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage
+    const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse)
 
-    const paginate = (pageNumber) => setCurrentPage(pageNumber);
-    const style = { style: { backgroundColour: "var(--bg-contrast)" } };
-
+    const paginate = (pageNumber) => setCurrentPage(pageNumber)
+    const style = { style: { backgroundColour: 'var(--bg-contrast)' } }
 
     return (
         <div className="course flex flex-col items-center justify-center">
@@ -69,7 +68,7 @@ const Course = () => {
                         <p>{course.description}</p>
                         <p className="text-secondary">Price: ${course.price}</p>
                         <button className="bought rounded-lg bg-primary border hover:bg-bg-contrast  px-2 py-1 font-medium text-bg-contrast m-2">
-                            <p>{course.bought ? "Bought" : "Buy Now"}</p>
+                            <p>{course.bought ? 'Bought' : 'Buy Now'}</p>
                         </button>
                         <div className="tags">
                             {course.tags.map((tag, index) => (
@@ -85,13 +84,7 @@ const Course = () => {
                 paginate={paginate}
             />
         </div>
-    );
-};
+    )
+}
 
-export default Course;
-
-
-
-
-
-
+export default Course
