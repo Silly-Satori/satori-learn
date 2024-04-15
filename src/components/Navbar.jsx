@@ -1,49 +1,55 @@
-import React from "react";
+import React from 'react'
 //import "./styles/Navbar.css";
-import { useState, useEffect } from "react";
-import Button from "./containers/Button";
-import LogoComponent from "./containers/LogoComponent";
-import { NavLinkUnderlined } from "./containers/NavLinkUnderline";
-import axios from "axios";
+import { useState, useEffect } from 'react'
+import Button from './containers/Button'
+import LogoComponent from './containers/LogoComponent'
+import { NavLinkUnderlined } from './containers/NavLinkUnderline'
+import axios from 'axios'
 
 function Navbar() {
-    const [isExpanded, setIsExpanded] = useState(false);
-    const [user, setUser] = useState(null);
-    const [profile, setProfile] = useState(null);
+    const [isExpanded, setIsExpanded] = useState(false)
+    const [user, setUser] = useState(null)
+    const [profile, setProfile] = useState(null)
 
     const toggleNavbar = () => {
-        setIsExpanded(!isExpanded);
-    };
+        setIsExpanded(!isExpanded)
+    }
 
     useEffect(() => {
         try {
-            let session = localStorage.getItem("session");
+            let session = localStorage.getItem('session')
             if (session) {
                 // send a post request to the backend to get the user profile
                 axios
-                    .post("http://localhost:8000/user/info", {
+                    .post('http://localhost:8000/user/info', {
                         token: session,
                     })
                     .then((res) => {
                         // get the image data from the res.picture url
+                        try{
                         let imgdata = fetch(res.data.picture, {
-                            method: "GET",
-                            
+                            method: 'GET',
+                        })
+                            .then((res) => res.blob())
+                            .then((blob) => {
+                                let url = URL.createObjectURL(blob)
+                                res.data.picture = url
+                                setUser(res.data)
+                            })
+                        }catch(err){
+                            console.log(err)
+                            console.log("Probably CORS issue")
+                            let url = res.data.picture
+                            res.data.picture = url
+                            setUser(res.data)
                         }
-                        ).then((res) =>
-                            res.blob()
-                        ).then((blob) => {
-                            let url = URL.createObjectURL(blob);
-                            res.data.picture = url;
-                            setUser(res.data);
-                        });
-                    });
+                    })
             }
-            console.log(user);
+            console.log(user)
         } catch (error) {
-            console.log(error);
+            console.log(error)
         }
-    }, []);
+    }, [])
     return (
         <nav className="bg-bg-contrast transition duration-200 ease-in-out">
             <div className="flex justify-between items-center py-4 px-8 m-0 z-1 w-full h-20 bg-bg-contrast text-[#E0EFFB]">
@@ -51,11 +57,10 @@ function Navbar() {
 
                 {/* <input className="input lg:flex hidden bg-nav " placeholder="Learn what you </div>like" /> */}
                 <input
-                 className="h</NavLinkUnderlined>-10 w-1/2 h-14 hidden md:flex border-text border-2 bg-[#a0a0a000] rounded-[16px] px-4 py-6 text-text font-semibold focus:outline-none hover:border-primary transition duration-500 ease-in-out hover:shadow-md hover:bg-[#00000030]"
-
+                    className="h</NavLinkUnderlined>-10 w-1/2 h-14 hidden md:flex border-text border-2 bg-[#a0a0a000] rounded-[16px] px-4 py-6 text-text font-semibold focus:outline-none hover:border-primary transition duration-500 ease-in-out hover:shadow-md hover:bg-[#00000030]"
                     placeholder="Learn what you like"
                 />
-                
+
                 <div className="items-center justify-between gap-auto space-x-5 hidden lg:flex">
                     <NavLinkUnderlined to="/courses" text="Courses">
                         Courses
@@ -70,12 +75,12 @@ function Navbar() {
                         <div
                             className="flex items-center"
                             onClick={() => {
-                                localStorage.removeItem("session");
-                                setUser(null);
+                                localStorage.removeItem('session')
+                                setUser(null)
                             }}
                         >
                             <img
-                                src={(String(user.picture).split("="))[0]}
+                                src={String(user.picture).split('=')[0]}
                                 alt="user image"
                                 className="rounded-full h-10 w-10"
                             />
@@ -86,8 +91,8 @@ function Navbar() {
                             stylevar="font-semibold text-primary bg-[#00000000] hover:bg-primary hover:text-bg p-2 rounded transition duration-500 ease-in-out border-2 border-primary py-2 rounded-[16px] hover:shadow-md hover:text-white"
                             onClick={() => {
                                 let auth_link =
-                                    "http://localhost:8000/auth/login";
-                                window.location.href = auth_link;
+                                    'http://localhost:8000/auth/login'
+                                window.location.href = auth_link
                             }}
                         />
                     )}
@@ -101,7 +106,7 @@ function Navbar() {
             </div>
             <div
                 className={`lg:hidden ${
-                    isExpanded ? "block" : "hidden"
+                    isExpanded ? 'block' : 'hidden'
                 } bg-bg-contrast`}
             >
                 <div className="flex flex-col mt-4 pb-3">
@@ -119,7 +124,7 @@ function Navbar() {
                 </div>
             </div>
         </nav>
-    );
+    )
 }
 /*
 import React, { useState, useEffect } from "react";
@@ -209,4 +214,4 @@ const Navbar = () => {
 
 }*/
 
-export { Navbar };
+export { Navbar }
