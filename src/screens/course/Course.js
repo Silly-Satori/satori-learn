@@ -5,14 +5,8 @@ import "./styles/Course.css";
 import Pagination from './Pagination';
 
 //actual courses we will be using from the backend
-import Pagination from './Pagination';
-
-//actual courses we will be using from the backend
 const Course = () => {
     const [courses, setCourses] = useState([]);
-    const [currentPage, setCurrentPage] = useState(1);
-    //change the coursesPerPage to whatever you want, I set as 2 just for testing and due to less courses
-    const [coursesPerPage] = useState(2); 
     const [currentPage, setCurrentPage] = useState(1);
     //change the coursesPerPage to whatever you want, I set as 2 just for testing and due to less courses
     const [coursesPerPage] = useState(2); 
@@ -64,7 +58,6 @@ const Course = () => {
                 Courses
             </div>
             <div className="course-list  grid gap-12 grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 ">
-                {currentCourses.map((course, index) => (
                 {currentCourses.map((course, index) => (
                     <div
                         key={index}
