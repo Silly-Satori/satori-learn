@@ -1,0 +1,36 @@
+.pagination {
+    list-style: none;
+    display: flex;
+    justify-content: center;
+    margin-top: 40px;
+  }
+  
+  .pagination li {
+    margin: 10px 5px;
+  }
+  .paginate .active a{
+    background-color: cyan !important;
+    color: var(--primary-color);
+  }
+
+  .pagination a {
+    color: #fff;
+    text-decoration: none;
+    padding: 5px 9px;
+    background-color: var(--primary-color);
+    border: 1px solid #fff;
+    border-radius: 5px;
+    font-weight: bold;
+  }
+  
+  .pagination a:hover {
+    background-color: cyan;
+    border-bottom-color: transparent;
+    transition: 0.3s;
+  }
+
+
+
+  
+  
+  

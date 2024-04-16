@@ -1,7 +1,11 @@
 
 /* Styles for the logo image */
-.logo-img {
-    transition: filter 0.3s ease-in-out;
+
+.logo-img:hover {
+    scale : 1.02; 
+    transition : 0.2s ease-in-out;
+    display: inline-block
+
 }
 
 

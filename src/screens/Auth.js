@@ -18,7 +18,6 @@ const Auth = () => {
         localStorage.setItem("session", authVar);
 
 
-
         let r  = axios.post(
             "http://localhost:8000/post",
             {

@@ -1,0 +1,13 @@
+.right{
+    display: flex;
+    flex-grow: calc( 100vh - 228px);
+   padding-left: 5rem;
+   padding-right:1rem ;
+   margin: auto;
+}
+
+
+
+    
+
+
