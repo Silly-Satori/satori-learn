@@ -5,6 +5,7 @@ import Home from "../screens/home/Home";
 import NotFound from "../screens/404";
 import AuthPage from "../screens/Auth";
 import Course from "../screens/course/Course";
+import Pay from "../screens/courses/Pay";
 
 export const router = createBrowserRouter([
     {
@@ -35,6 +36,15 @@ export const router = createBrowserRouter([
             <Navbar />,
             <Routes>
                 <Route path="/" element={<Course />} />
+            </Routes>
+        ]
+    },
+    {
+        path: "/pay",
+        element: [
+            <Navbar />,
+            <Routes>
+                <Route path="/" element={<Pay />} />
             </Routes>
         ]
     }
