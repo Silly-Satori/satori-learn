@@ -42,15 +42,6 @@ export const router = createBrowserRouter([
         ]
     },
     {
-        path: "/pay",
-        element: [
-            <Navbar />,
-            <Routes>
-                <Route path="/" element={<Pay />} />
-            </Routes>
-        ]
-    },
-    {
         path: "/viewCourse/:id",
         element: [
             <Navbar />,
