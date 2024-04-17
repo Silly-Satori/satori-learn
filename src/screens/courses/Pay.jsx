@@ -53,21 +53,24 @@ async function displayRazorpay() {
     }
 
     // Getting the order details back
-    const { amount, id: order_id, currency } = result.data;
+    const { amount, id: order_id, currency, notes } = result.data;
 
     const options = {
         key: "rzp_test_FotajhzORk2aYr", // Enter the Key ID generated from the Dashboard
         amount: amount.toString(),
-        currency: "INR",
+        currency: currency,
         name: "Satori Learn",
         description: "Test Transaction",
         order_id: order_id,
+        notes: notes,
         handler: async function (response) {
             const data = {
                 orderCreationId: order_id,
                 razorpayPaymentId: response.razorpay_payment_id,
                 razorpayOrderId: response.razorpay_order_id,
                 razorpaySignature: response.razorpay_signature,
+                notes: notes,
+                token: localStorage.getItem("session"),
             };
 
             const result = await axios.post("http://localhost:8000/pay/verify", data);
