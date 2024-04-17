@@ -1,5 +1,6 @@
 import React from 'react'
 import axios from 'axios'
+import { backend } from '../../Links'
 
 function Pay({ courseId, bought }) {
     async function loadScript(src) {
@@ -17,6 +18,23 @@ function Pay({ courseId, bought }) {
     }
 
     async function displayRazorpay() {
+        var userData = null
+        try {
+            let session = localStorage.getItem('session')
+            if (session) {
+                // send a post request to the backend to get the user profile
+                axios
+                    .post(`${backend}/user/info`, {
+                        token: session,
+                    })
+                    .then((res) => {
+                        console.log(res.data)
+                        userData = res.data
+                    })
+            }
+        } catch (error) {
+            console.log(error)
+        }
         const res = await loadScript(
             'https://checkout.razorpay.com/v1/checkout.js'
         )
@@ -28,7 +46,7 @@ function Pay({ courseId, bought }) {
 
         try {
             const result = await axios.post(
-                `http://localhost:8000/pay/purchase/${courseId}`,
+                `${backend}/pay/purchase/${courseId}`,
                 {
                     token: localStorage.getItem('session'),
                 }
@@ -60,7 +78,7 @@ function Pay({ courseId, bought }) {
                     }
 
                     const result = await axios.post(
-                        'http://localhost:8000/pay/verify',
+                        `${backend}/pay/verify`,
                         data
                     )
 
@@ -68,16 +86,13 @@ function Pay({ courseId, bought }) {
                         alert('Payment Successful')
                         // reload the page
                         window.location.reload()
-                    }
-                    else {
+                    } else {
                         alert('Payment Failed')
                     }
-                    
                 },
                 prefill: {
-                    name: 'Parth',
-                    email: 'parth@gmail.com',
-                    contact: '9999999999',
+                    name: userData ? userData.name : null,
+                    email: userData ? userData.email : null,
                 },
                 theme: {
                     color: '#7289da',

@@ -5,4 +5,7 @@ let dict = {
     "frontend": "http://localhost:3000",
 }
 
-export default dict;
+let backend = dict["backend"];
+let frontend = dict["frontend"];
+
+export { backend, frontend };

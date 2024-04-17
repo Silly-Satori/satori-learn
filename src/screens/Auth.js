@@ -2,7 +2,9 @@ import axios from "axios";
 import { useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import Cookies from "universal-cookie";
+import { backend } from "../Links";
 import "axios";
+
 
 const Auth = () => {
     const navigate = useNavigate();
@@ -19,7 +21,7 @@ const Auth = () => {
 
 
         let r  = axios.post(
-            "http://localhost:8000/post",
+            `${backend}/post`,
             {
                 session: authVar,
             },
@@ -37,7 +39,7 @@ const Auth = () => {
             }
         );
 
-        let req = axios.get("http://localhost:8000/data").then(
+        let req = axios.get(`${backend}/data`).then(
             (response) => {
                 console.log(response.data);
             },

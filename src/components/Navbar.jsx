@@ -5,6 +5,7 @@ import Button from './containers/Button'
 import LogoComponent from './containers/LogoComponent'
 import { NavLinkUnderlined } from './containers/NavLinkUnderline'
 import axios from 'axios'
+import { backend } from '../Links'
 
 function Navbar() {
     const [isExpanded, setIsExpanded] = useState(false)
@@ -21,7 +22,7 @@ function Navbar() {
             if (session) {
                 // send a post request to the backend to get the user profile
                 axios
-                    .post('http://localhost:8000/user/info', {
+                    .post(`${backend}/user/info`, {
                         token: session,
                     })
                     .then((res) => {
@@ -77,6 +78,8 @@ function Navbar() {
                             onClick={() => {
                                 localStorage.removeItem('session')
                                 setUser(null)
+                                // redirect to home
+                                window.location.href = '/'
                             }}
                         >
                             <img
@@ -91,7 +94,7 @@ function Navbar() {
                             stylevar="font-semibold text-primary bg-[#00000000] hover:bg-primary hover:text-bg p-2 rounded transition duration-500 ease-in-out border-2 border-primary py-2 rounded-[16px] hover:shadow-md hover:text-white"
                             onClick={() => {
                                 let auth_link =
-                                    'http://localhost:8000/auth/login'
+                                    `${backend}/auth/login`
                                 window.location.href = auth_link
                             }}
                         />

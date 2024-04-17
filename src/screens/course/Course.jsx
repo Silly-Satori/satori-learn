@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react';
 import Pay from '../courses/Pay.jsx';
 import image from './images/undraw_react_re_g3ui.svg';
+import { backend } from '../../Links.js';
 import axios from 'axios';
 import './styles/Course.css';
 import Pagination from './Pagination';
@@ -13,17 +14,34 @@ const Course = () => {
 
   const [coursesPerPage] = useState(3);
 
+  console.log(localStorage.getItem('session'));
+  if (!localStorage.getItem('session')) {
+    return (
+      <div className="course flex flex-col items-center justify-center">
+      <div className="course-header text-5xl font-bold flex items-center justify-start p-5">
+        Courses
+      </div>
+      <div className="course-list flex flex-wrap justify-center">
+        <div className="course-card p-4 hover:border-primary rounded-lg shadow-lg font-light text-center border w-64 mx-2 my-2 md:w-72 px-5 pb-5 text-2xl">
+        <h2 className="font-bold">Please login to view courses</h2>
+        </div>
+      </div>
+      </div>
+    );
+  }
+
   useEffect(() => {
     let purchased = [];
+
     axios
-      .get(`http://localhost:8000/user/user_data/courses?token=${localStorage.getItem('session')}`)
+      .get(`${backend}/user/user_data/courses?token=${localStorage.getItem('session')}`)
       .then((res) => {
         purchased = res.data;
         console.log(purchased);
       })
       .then(() => {
         axios
-          .get(`http://localhost:8000/courses/fetch/0`)
+          .get(`${backend}/courses/fetch/0`)
           .then((res) => {
             let copy = [...res.data];
             console.log(copy);
