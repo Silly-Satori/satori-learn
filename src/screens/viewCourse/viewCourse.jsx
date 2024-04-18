@@ -18,6 +18,45 @@ const currentCourse = {
   videoId: 'your-youtube-video-id', 
 };
 
+// our schema is different from the one in the snippet above
+const actualCurrentCourse = {
+  _id: "4",
+  videos: [
+    {
+      title: "Introduction to React",
+      videoId: "your-youtube-video-id",
+      desc: "Learn the basics of React.js",
+    },
+    {
+      title: "React Components",
+      videoId: "your-youtube-video-id",
+      desc: "Learn about React components",
+    },
+    {
+      title: "React Hooks",
+      videoId: "your-youtube-video-id",
+      desc: "Learn about React hooks",
+    }
+  ],
+    
+  resources: [
+    {
+      title: "React Docs",
+      content : "https://reactjs.org/docs/getting-started.html",
+      desc: "Official React documentation"
+    },
+    {
+      title: "React Quick Start",
+      content: "Today we will learn how to use React\n\nReact is a JavaScript library for building user interfaces\n\nReact is used to build single page applications\n\nReact allows us to create reusable UI components",
+      desc: "Quick start guide for React"
+    }
+  ],
+  quizzes: [
+    // nothing here yet
+  ],
+  other: []
+}
+
 
 const otherCourses = [
   {
