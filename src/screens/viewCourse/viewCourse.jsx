@@ -95,13 +95,15 @@ const viewCourse = () => {
     // }, [actualCurrentCourse.videos])
 
     return (
-        <div className="container mx-auto ml-14 mr-14  py-8 px-4 lg:flex">
+        <div className="container mx-auto ml-auto mr-auto md:ml-14 md:mr-14  py-8 px-4 lg:flex">
             <div className="lg:w-3/4 lg:pr-11">
                 <div
                     style={{
                         position: 'relative',
                         paddingBottom: '56.25%',
                         height: 0,
+                        paddingLeft: "1px",
+                        paddingRight: "2px",
                     }}
                 >
                     <iframe

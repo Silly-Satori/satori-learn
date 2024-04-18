@@ -78,12 +78,14 @@ function Navbar() {
                 <div className="flex flex-row items-center gap-3 ml-5 -mr-5">
                     {user ? (
                         <div
-                            className="flex items-center"
+                            className="flex items-center hover:scale-105 transition duration-500 ease-in-out"
                             onClick={() => {
-                                localStorage.removeItem('session')
-                                setUser(null)
-                                // redirect to home
-                                window.location.href = '/'
+                                // redirect to user page
+                                window.location.href = '/user'
+                                // localStorage.removeItem('session')
+                                // setUser(null)
+                                // // redirect to home
+                                // window.location.href = '/'
                             }}
                         >
                             <img
