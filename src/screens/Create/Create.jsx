@@ -88,7 +88,7 @@ const [courseData, setCourseData] = useState({
 // );
 return (
   <div className="create-course flex flex-col items-center justify-center min-h-screen ">
-    <div className="course-header text-5xl font-bold mb-10">
+    <div className="course-header text-5xl font-bold m-10">
       Create Courses
     </div>
     <form onSubmit={handleSubmit} className="w-full max-w-xl  rounded-lg shadow-md p-6">
