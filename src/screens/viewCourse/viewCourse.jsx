@@ -5,9 +5,9 @@ import { backend } from '../../Links.js'
 import axios from 'axios'
 
 const currentCourse = {
-  _id: "1",
-  title: "React Course",
-  description: "Learn React.js from scratch",
+    _id: '1',
+    title: 'React Course',
+    description: 'Learn React.js from scratch',
 }
 //our schema is different from the one in the snippet above
 const actualCurrentCourse = {
@@ -59,7 +59,7 @@ const viewCourse = () => {
 
         axios.get(`${backend}/courses/fetch_id/${id}`).then((response) => {
             //console.log(response.data);
-            setCurrentCourse(response.data);
+            setCurrentCourse(response.data)
         })
 
         axios
@@ -68,19 +68,19 @@ const viewCourse = () => {
             })
             .then((response) => {
                 //console.log(response.data);
-                setActualCurrentCourse(response.data);
+                setActualCurrentCourse(response.data)
                 if (response.data.videos.length > 0) {
-                setPlay(response.data.videos[0]) // set the first video to play
+                    setPlay(response.data.videos[0]) // set the first video to play
                 }
             })
             .catch((error) => {
-                console.error('Error fetching course data:', error);
+                console.error('Error fetching course data:', error)
                 alert(
                     'You are not authorized to view this course. Please login to view this course.'
-                );
-                window.location.href = '/';
+                )
+                window.location.href = '/'
             })
-    }, []);
+    }, [])
 
     // useEffect(() => {
     //     if (actualCurrentCourse.videos) {
@@ -113,35 +113,55 @@ const viewCourse = () => {
                             width: '100%',
                             height: '100%',
                         }}
-                        src={`https://www.youtube.com/embed/${play? play.videoId: "FtutLA63Cp8"}`}
+                        src={`https://www.youtube.com/embed/${
+                            play ? play.videoId : 'FtutLA63Cp8'
+                        }`}
                         frameBorder="0"
                         allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                         allowFullScreen
                     ></iframe>
                 </div>
                 <div className="mt-6">
-                    <h2 className="text-2xl font-semibold">
-                        {currentCourse.title} {id}
+                    <h2 className="text-2xl font-semibold text-primary">
+                        {currentCourse.name}
                     </h2>
                     <p className="text-gray-600 mt-2">
-                        {currentCourse.description}
+                        {currentCourse.content}
                     </p>
+                    <div className="mt-4">
+                        <p className="text-gray-600">
+                            Category: {currentCourse.category}
+                        </p>
+                        <p className="text-gray-600">
+                            Difficulty: {currentCourse.difficulty}
+                        </p>
+                        <p className="text-gray-600">
+                            Language: {currentCourse.language}
+                        </p>
+                    </div>
                 </div>
             </div>
 
             <div className="lg:w-1/4 mt-8 lg:mt-0">
                 <h3 className="text-xl font-semibold mb-4">Lecture Videos</h3>
                 <div className="divide-y divide-gray-200">
-                    {
-                        actualCurrentCourse.videos &&
+                    {actualCurrentCourse.videos &&
                         actualCurrentCourse.videos.map((video) => (
-                            <div key={video.id} className='py-2 px-1 m-1 cursor-pointer hover:bg-bg-contrast hover:text-accent hover:scale-110 transform transition duration-300'
-                                onClick={() => setPlay(video)}>
-                                <h4 className={`text-lg font-semibold ${play == video ? "text-secondary":""}`}>{video.title}</h4>
+                            <div
+                                key={video.id}
+                                className="py-2 px-1 m-1 cursor-pointer hover:bg-bg-contrast hover:text-accent hover:scale-110 transform transition duration-300"
+                                onClick={() => setPlay(video)}
+                            >
+                                <h4
+                                    className={`text-lg font-semibold ${
+                                        play == video ? 'text-secondary' : ''
+                                    }`}
+                                >
+                                    {video.title}
+                                </h4>
                                 <p className="text-gray-600">{video.desc}</p>
                             </div>
-                        ))
-                    }
+                        ))}
                 </div>
             </div>
         </div>
