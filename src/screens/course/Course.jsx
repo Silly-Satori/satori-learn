@@ -80,15 +80,18 @@ const Course = () => {
             key={index}
             className="course-card p-4 hover:border-primary rounded-lg shadow-lg font-light text-center border w-64 mx-2 my-2 md:w-72 px-5 pb-5"
           >
-             {/* <img src={`/assets/courses/${course.authorImage}`} alt={course.name} /> */}
+            {/* <img src={`/assets/courses/${course.authorImage}`} alt={course.name} /> */}
             <img src={image} alt={course.name} />
-            <h2 className="font-bold">{course.name}</h2>
-            <p>{course.description}</p>
-            <p className="text-secondary">Price: ${course.price}</p>
+            <h2 className="font-bold text-xl p-3">{course.name}</h2>
+            <p className="-pt-2 pb-1">{course.description}</p>
+            <p className="text-secondary">Price: <span className='font-bold'>${course.price}</span></p>
             <Pay courseId={course._id} bought={course.bought} />
             <div className="tags">
               {course.tags.map((tag, index) => (
-                <span key={index}>{tag}</span>
+                <span key={index} className="tag text-gray-400 italic">
+                  {tag}
+                  {index !== course.tags.length - 1 && <span className="tag-dot"> &bull; </span>}
+                </span>
               ))}
             </div>
           </div>
@@ -100,7 +103,7 @@ const Course = () => {
         paginate={paginate}
       />
     </div>
-  )
+  );
 }
 
 export default Course;
