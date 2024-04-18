@@ -49,7 +49,9 @@ const [courseData, setCourseData] = useState({
   };
 return (
     <div className="create-course">
-        <h2 className="text-2xl font-bold">Create a New Course</h2>
+        <div className="course-header text-5xl font-bold flex items-center justify-start p-5">
+      Create Courses
+    </div>
         <form onSubmit={handleSubmit} className="mt-4">
             <div className="form-group">
                 <label className="block mb-2">Name:</label>

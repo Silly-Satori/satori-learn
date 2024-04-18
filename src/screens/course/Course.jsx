@@ -42,7 +42,6 @@ const Course = () => {
           .get(`${backend}/courses/fetch/0`)
           .then((res) => {
             let copy = [...res.data];
-            console.log(copy);
             copy.forEach((course) => {
               course.authorImage = 'undraw_next_js_-8-g5m.svg';
               course.tags = ['tag1', 'tag2', 'tag3'];

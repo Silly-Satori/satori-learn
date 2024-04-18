@@ -29,7 +29,6 @@ function Pay({ courseId, bought }) {
                     })
                     .then((res) => {
                         console.log(res.data)
-                        console.log(res.data.name)
                         userData = res.data
                     })
             }
