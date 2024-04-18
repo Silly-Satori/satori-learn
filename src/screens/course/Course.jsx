@@ -13,8 +13,6 @@ const Course = () => {
       //change the coursesPerPage to whatever you want, I set as 3 just for testing and due to less courses
 
   const [coursesPerPage] = useState(3);
-
-  console.log(localStorage.getItem('session'));
   if (!localStorage.getItem('session')) {
     return (
       <div className="course flex flex-col items-center justify-center">

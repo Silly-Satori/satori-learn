@@ -8,6 +8,7 @@ import Course from "../screens/course/Course";
 import Pay from "../screens/courses/Pay";
 import ViewCourse from "../screens/viewCourse/viewCourse";
 import UserPage from "../screens/user/userPage";
+import Create from "../screens/Create/Create";
 
 export const router = createBrowserRouter([
     {
@@ -58,6 +59,16 @@ export const router = createBrowserRouter([
                 <Route path="/" element={<UserPage />} />
             </Routes>
         ]
+    },
+    {
+        path: "/create",
+        element: [
+            <Navbar />,
+            <Routes>
+                <Route path="/" element={<Create />} />
+            </Routes>
+        ]
     }
+    
 ]);
 

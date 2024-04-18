@@ -69,6 +69,10 @@ function Navbar() {
                     <NavLinkUnderlined to="/about" text="About">
                         About
                     </NavLinkUnderlined>
+                    <NavLinkUnderlined to="/create" text="Create">
+                        Create
+                    </NavLinkUnderlined>
+                    
                 </div>
 
                 <div className="flex flex-row items-center gap-3 ml-5 -mr-5">
