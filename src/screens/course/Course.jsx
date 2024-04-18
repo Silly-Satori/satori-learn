@@ -50,6 +50,8 @@ const Course = () => {
               } else {
                 course.bought = false;
               }
+              // send the "bought courses" to end of the list
+              copy.sort((a, b) => (a.bought === b.bought ? 0 : a.bought ? 1 : -1));
             });
             setCourses(copy);
           })
