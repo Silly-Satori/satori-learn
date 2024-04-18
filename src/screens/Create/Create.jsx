@@ -39,6 +39,7 @@ const [courseData, setCourseData] = useState({
         //set reviews as empty array
         courseData.reviews = [];        
       console.log(courseData);
+      courseData.token = localStorage.getItem('session');
       const response = await axios.post(`${backend}/courses/create`, courseData);
       console.log('Course created:', response.data);
       window.location.href = `/courses`;
