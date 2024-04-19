@@ -1,5 +1,5 @@
 import React from 'react'
-import { useParams } from 'react-router-dom'
+import { useParams, Link } from 'react-router-dom'
 import { useState, useEffect } from 'react'
 import { backend } from '../../Links.js'
 import axios from 'axios'
@@ -95,7 +95,13 @@ const viewCourse = () => {
     // }, [actualCurrentCourse.videos])
 
     return (
+        <>
+        <Link to="/user" className="text-primary flex items-center md:ml-14 md:mr-14 py-8 px-4 transform transition duration-300 ease-in-out hover:-translate-x-2">
+                <i className="fas fa-arrow-left"></i> 
+                <span className="ml-2 text-accent">Back to Courses</span>
+            </Link>
         <div className="container mx-auto ml-auto mr-auto md:ml-14 md:mr-14  py-8 px-4 lg:flex">
+            
             <div className="lg:w-3/4 lg:pr-11">
                 <div
                     style={{
@@ -167,6 +173,7 @@ const viewCourse = () => {
                 </div>
             </div>
         </div>
+        </>
     )
 }
 

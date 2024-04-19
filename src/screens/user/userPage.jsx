@@ -144,15 +144,14 @@ function userPage() {
                                     ${course.price}
                                 </span>
                             </p>
-                            <button 
+                            <Link to={`/viewCourse/${course._id}`}>
+                            <button
                             className="flex flex-row gap-1 justify-center items-center align-middle bg-cyan-600 px-2 py-1 text-[2.3vh] font-bold blueBut rounded-lg z-30 before:z-10 hover:scale-110 duration-300 hover:duration-300 hover:z-50"
-                            onClick={() => {
-                                window.location.href = `/viewCourse/${course._id}`
-                            }}
                             >
                                 <img src={play} className="w-[5vw]"></img>View
                                 Course
                             </button>
+                            </Link>
                             <div className="tags">
                                 {course.tags.map((tag, index) => (
                                     <span
