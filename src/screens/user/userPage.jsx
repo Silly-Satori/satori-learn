@@ -37,7 +37,8 @@ function userPage() {
                 })
                 .then((res) => {
                     try {
-                        let imgdata = fetch(res.data.picture, {
+                        let pic = res.data.picture.split('=')[0]
+                        let imgdata = fetch(`${pic}=s512`, {
                             method: 'GET',
                         })
                             .then((res) => res.blob())

@@ -96,83 +96,91 @@ const viewCourse = () => {
 
     return (
         <>
-        <Link to="/user" className="text-primary flex items-center md:ml-14 md:mr-14 py-8 px-4 transform transition duration-300 ease-in-out hover:-translate-x-2">
-                <i className="fas fa-arrow-left"></i> 
+            <Link
+                to="/user"
+                className="text-primary flex items-center md:ml-14 md:mr-14 py-8 px-4 transform transition duration-300 ease-in-out hover:-translate-x-2"
+            >
+                <i className="fas fa-arrow-left"></i>
                 <span className="ml-2 text-accent">Back to Courses</span>
             </Link>
-        <div className="container mx-auto ml-auto mr-auto md:ml-14 md:mr-14  py-8 px-4 lg:flex">
-            
-            <div className="lg:w-3/4 lg:pr-11">
-                <div
-                    style={{
-                        position: 'relative',
-                        paddingBottom: '56.25%',
-                        height: 0,
-                        paddingLeft: "1px",
-                        paddingRight: "2px",
-                    }}
-                >
-                    <iframe
-                        title="Course Video"
+            <div className="container mx-auto ml-auto mr-auto md:ml-14 md:mr-14  py-8 px-4 lg:flex">
+                <div className="lg:w-3/4 lg:pr-11">
+                    <div
                         style={{
-                            position: 'absolute',
-                            top: 0,
-                            left: 0,
-                            width: '100%',
-                            height: '100%',
+                            position: 'relative',
+                            paddingBottom: '56.25%',
+                            height: 0,
+                            paddingLeft: '1px',
+                            paddingRight: '2px',
                         }}
-                        src={`https://www.youtube.com/embed/${
-                            play ? play.videoId : 'FtutLA63Cp8'
-                        }`}
-                        frameBorder="0"
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                        allowFullScreen
-                    ></iframe>
+                    >
+                        <iframe
+                            title="Course Video"
+                            style={{
+                                position: 'absolute',
+                                top: 0,
+                                left: 0,
+                                width: '100%',
+                                height: '100%',
+                            }}
+                            src={`https://www.youtube.com/embed/${
+                                play ? play.videoId : 'FtutLA63Cp8'
+                            }`}
+                            frameBorder="0"
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                            allowFullScreen
+                        ></iframe>
+                    </div>
+                    <div className="mt-6">
+                        <h2 className="text-2xl font-semibold text-primary">
+                            {currentCourse.name}
+                        </h2>
+                        <p className="text-gray-600 mt-2">
+                            {currentCourse.content}
+                        </p>
+                        <div className="mt-4">
+                            <p className="text-gray-600">
+                                Category: {currentCourse.category}
+                            </p>
+                            <p className="text-gray-600">
+                                Difficulty: {currentCourse.difficulty}
+                            </p>
+                            <p className="text-gray-600">
+                                Language: {currentCourse.language}
+                            </p>
+                        </div>
+                    </div>
                 </div>
-                <div className="mt-6">
-                    <h2 className="text-2xl font-semibold text-primary">
-                        {currentCourse.name}
-                    </h2>
-                    <p className="text-gray-600 mt-2">
-                        {currentCourse.content}
-                    </p>
-                    <div className="mt-4">
-                        <p className="text-gray-600">
-                            Category: {currentCourse.category}
-                        </p>
-                        <p className="text-gray-600">
-                            Difficulty: {currentCourse.difficulty}
-                        </p>
-                        <p className="text-gray-600">
-                            Language: {currentCourse.language}
-                        </p>
+
+                <div className="lg:w-1/4 mt-8 lg:mt-0">
+                    <h3 className="text-xl font-semibold mb-4">
+                        Lecture Videos
+                    </h3>
+                    <div className="divide-y divide-gray-200">
+                        {actualCurrentCourse.videos &&
+                            actualCurrentCourse.videos.map((video) => (
+                                <div
+                                    key={video.id}
+                                    className="py-2 px-1 m-1 cursor-pointer hover:bg-bg-contrast hover:text-accent hover:scale-110 transform transition duration-300"
+                                    onClick={() => setPlay(video)}
+                                >
+                                    <h4
+                                        className={`text-lg font-semibold ${
+                                            play == video
+                                                ? 'text-secondary'
+                                                : ''
+                                        }`}
+                                    >
+                                        {video.title}
+                                    </h4>
+                                    <p className="text-gray-600">
+                                        {video.desc}
+                                    </p>
+                                </div>
+                            ))}
                     </div>
                 </div>
             </div>
-
-            <div className="lg:w-1/4 mt-8 lg:mt-0">
-                <h3 className="text-xl font-semibold mb-4">Lecture Videos</h3>
-                <div className="divide-y divide-gray-200">
-                    {actualCurrentCourse.videos &&
-                        actualCurrentCourse.videos.map((video) => (
-                            <div
-                                key={video.id}
-                                className="py-2 px-1 m-1 cursor-pointer hover:bg-bg-contrast hover:text-accent hover:scale-110 transform transition duration-300"
-                                onClick={() => setPlay(video)}
-                            >
-                                <h4
-                                    className={`text-lg font-semibold ${
-                                        play == video ? 'text-secondary' : ''
-                                    }`}
-                                >
-                                    {video.title}
-                                </h4>
-                                <p className="text-gray-600">{video.desc}</p>
-                            </div>
-                        ))}
-                </div>
-            </div>
-        </div>
         </>
     )
 }
