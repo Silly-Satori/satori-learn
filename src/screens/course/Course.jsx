@@ -67,6 +67,39 @@ const Course = () => {
   const indexOfLastCourse = currentPage * coursesPerPage;
   const indexOfFirstCourse = indexOfLastCourse - coursesPerPage;
   const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse);
+  const [popup, setPopup] = useState({
+    _id : '',
+    name: '',
+    description: '',
+    price: '',
+    tags: [],
+    long_description: '',
+    videos : [],
+  });
+
+  useEffect(() => {
+    // fetch videos
+    console.log('Popup:', popup);
+  }, [popup]);
+
+  const displayPopup = (index) => () => {
+    console.log('Course:', courses[index]);
+    let popupData = {};
+    popupData._id = courses[index]._id;
+    popupData.name = courses[index].name;
+    popupData.description = courses[index].description;
+    popupData.price = courses[index].price;
+    popupData.tags = courses[index].tags;
+    popupData.long_description = courses[index].long_description;
+    popupData.videos = null;
+    axios
+      .get(`${backend}/courses/get_overview/${popupData._id}`)
+      .then((res) => {
+        popupData.videos = res.data.videos;
+      }).then(() => {
+        setPopup(popupData);
+      });
+  }
 
   const paginate = (pageNumber) => setCurrentPage(pageNumber);
 
@@ -80,6 +113,7 @@ const Course = () => {
           <div
             key={index}
             className="course-card p-4 hover:border-primary rounded-lg shadow-lg font-light text-center border w-64 mx-2 my-2 md:w-72 px-5 pb-5"
+            onClick={displayPopup(index)}
           >
             {/* <img src={`/assets/courses/${course.authorImage}`} alt={course.name} /> */}
             <img src={image} alt={course.name} />
