@@ -66,10 +66,7 @@ const Course = () => {
     popupData.price = currentCourses[index].price;
     popupData.tags = currentCourses[index].tags;
     popupData.long_description = currentCourses[index].long_description;
-    // popupData.language = courses[index].language; // assuming the course object has a language property
-    // popupData.difficulty = courses[index].difficulty; // assuming the course object has a difficulty property
-    // popupData.youtubeVideoUrl = courses[index].youtubeVideoUrl; // assuming the course object has a youtubeVideoUrl property
-    popupData.videos = null;
+      popupData.videos = null;
 
     axios
       .get(`${backend}/courses/get_overview/${popupData._id}`)
@@ -147,21 +144,23 @@ const Course = () => {
         {popup && (
   <>
     <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5 z-10 w-4/5 max-w-lg rounded-lg shadow-lg bg-bg-contrast">
-      <button className="float-right" onClick={() => setPopup(null)}><IoClose /></button>
-      <h2 className="text-2xl font-bold mb-2">{popup.name}</h2>
-      <p className="text-base">Description: {popup.description}</p>
-      <p className="text-base">Price: ${popup.price}</p>
-      <p className="text-base">{popup.tags.join(', ')}</p>
-      <p className="text-base">{popup.long_description}</p>
-      {/* Display YouTube video if it exists */}
-      {popup.videos && popup.videos.map((video, index) => (
-        <div key={index}>
-          <h1 className="text-lg font-semibold">{video.title}</h1>
-          <h1 className="text-base">{video.desc}</h1>
-          </div>
-      ))}
+<div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5 z-10 w-4/5 max-w-lg rounded-lg shadow-lg bg-bg-contrast">
+  <button className="float-right" onClick={() => setPopup(null)}><IoClose /></button>
+  <h2 className="text-2xl font-bold mb-2 text-center">{popup.name}</h2>
+  <p className="text-base mb-2">Description: {popup.description}</p>
+  <p className="text-base mb-2">Price: ${popup.price}</p>
+  <p className="text-base mb-2">{popup.tags.join(', ')}</p>
+  <h1 className="text-lg font-semibold mb-2">Videos In This Course</h1>
+  <p className="text-base mb-2">{popup.long_description}</p>
+  {/* Display YouTube video if it exists */}
+  {popup.videos && popup.videos.map((video, index) => (
+    <div key={index} className="mb-2">
+      <hr></hr>
+      <h1 className="text-lg font-semibold mb-1">{video.title}</h1>
+      <h1 className="text-base">{video.desc}</h1>
     </div>
+  ))}
+</div>
   </>
 )}
     
@@ -178,63 +177,3 @@ export default Course
 
 
 
-// import React, { useState, useEffect } from 'react'
-// import axios from 'axios'
-// import { backend } from '../../Links.js'
-// import { Modal } from 'react-bootstrap'
-
-// const Course = () => {
-//     const [courses, setCourses] = useState([])
-//     const [popup, setPopup] = useState(null)
-
-//     useEffect(() => {
-//         axios.get(`${backend}/courses/fetch/0`).then((response) => {
-//             setCourses(response.data)
-//         }).catch((error) => {
-//             console.error('Error fetching courses:', error)
-//         })
-//     }, [])
-
-//     const displayPopup = (index) => () => {
-//         setPopup(courses[index])
-//     }
-
-//     const handleClose = () => setPopup(null)
-
-//     return (
-//         <>
-//             {/* ... */}
-//             <div className="course-list">
-//                 {courses.map((course, index) => (
-//                     <div key={index} className="course-card" onClick={displayPopup(index)}>
-//                         <h2>{course.name}</h2>
-//                         <p>{course.description}</p>
-//                         <p>Price: ${course.price}</p>
-//                     </div>
-//                 ))}
-//             </div>
-//             {popup && (
-//                 <Modal show={true} onHide={handleClose}>
-//                     <Modal.Header closeButton>
-//                         <Modal.Title>{popup.name}</Modal.Title>
-//                     </Modal.Header>
-//                     <Modal.Body>
-//                         <p>{popup.description}</p>
-//                         <p>Price: ${popup.price}</p>
-//                         <p>Tags: {popup.tags.join(', ')}</p>
-//                         <p>{popup.long_description}</p>
-//                         {/* Display videos if they exist */}
-//                         {popup.videos && popup.videos.map((video, index) => (
-//                             <div key={index}>
-//                                 <h3>{video.title}</h3> 
-//                                 <video src={video.url} controls /> 
-//                             </div>
-//                         ))}
-//                     </Modal.Body>
-//                 </Modal>
-//             )}
-//         </>
-//     )
-// }
-
-// export default Course
