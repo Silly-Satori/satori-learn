@@ -11,6 +11,15 @@ import { IoClose } from "react-icons/io5";
 const Course = () => {
     const [courses, setCourses] = useState([]);
     const [popup, setPopup] = useState(null);
+    
+    const [currentPage, setCurrentPage] = useState(1)
+    //change the coursesPerPage to whatever you want, I set as 3 just for testing and due to less courses
+
+    const [coursesPerPage] = useState(3)
+
+    const indexOfLastCourse = currentPage * coursesPerPage
+    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage
+    const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse)
 
   useEffect(() => {
     let purchased = [];
@@ -51,24 +60,26 @@ const Course = () => {
 
   const displayPopup = (index) => () => {
     let popupData = {};
-    popupData._id = courses[index]._id;
-    popupData.name = courses[index].name;
-    popupData.description = courses[index].description;
-    popupData.price = courses[index].price;
-    popupData.tags = courses[index].tags;
-    popupData.long_description = courses[index].long_description;
-    popupData.language = courses[index].language; // assuming the course object has a language property
-    popupData.difficulty = courses[index].difficulty; // assuming the course object has a difficulty property
-    popupData.youtubeVideoUrl = courses[index].youtubeVideoUrl; // assuming the course object has a youtubeVideoUrl property
+    popupData._id = currentCourses[index]._id;
+    popupData.name = currentCourses[index].name;
+    popupData.description = currentCourses[index].description;
+    popupData.price = currentCourses[index].price;
+    popupData.tags = currentCourses[index].tags;
+    popupData.long_description = currentCourses[index].long_description;
+    // popupData.language = courses[index].language; // assuming the course object has a language property
+    // popupData.difficulty = courses[index].difficulty; // assuming the course object has a difficulty property
+    // popupData.youtubeVideoUrl = courses[index].youtubeVideoUrl; // assuming the course object has a youtubeVideoUrl property
     popupData.videos = null;
-  
-    setPopup(popupData);
+
+    axios
+      .get(`${backend}/courses/get_overview/${popupData._id}`)
+      .then((res) => {
+        popupData.videos = res.data.videos;
+      }).then(() => {
+        setPopup(popupData);
+      });
   };
 
-    const [currentPage, setCurrentPage] = useState(1)
-    //change the coursesPerPage to whatever you want, I set as 3 just for testing and due to less courses
-
-    const [coursesPerPage] = useState(3)
     if (!localStorage.getItem('session')) {
         return (
             <div className="course flex flex-col items-center justify-center">
@@ -87,9 +98,7 @@ const Course = () => {
     }
 
 
-    const indexOfLastCourse = currentPage * coursesPerPage
-    const indexOfFirstCourse = indexOfLastCourse - coursesPerPage
-    const currentCourses = courses.slice(indexOfFirstCourse, indexOfLastCourse)
+
   
     useEffect(() => {
         // fetch videos
@@ -141,26 +150,17 @@ const Course = () => {
     <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5 z-10 w-4/5 max-w-lg rounded-lg shadow-lg bg-bg-contrast">
       <button className="float-right" onClick={() => setPopup(null)}><IoClose /></button>
       <h2 className="text-2xl font-bold mb-2">{popup.name}</h2>
-      <p className="text-base">{popup.description}</p>
-      <p className="text-base">{popup.price}</p>
+      <p className="text-base">Description: {popup.description}</p>
+      <p className="text-base">Price: ${popup.price}</p>
       <p className="text-base">{popup.tags.join(', ')}</p>
       <p className="text-base">{popup.long_description}</p>
-      <p className="text-base">Language: {popup.language}</p>
-      <p className="text-base">Difficulty: {popup.difficulty}</p>
       {/* Display YouTube video if it exists */}
-      {popup.youtubeVideoUrl && (
-        <div>
-          <iframe
-            width="560"
-            height="315"
-            src={popup.youtubeVideoUrl}
-            title="YouTube video player"
-            frameborder="0"
-            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-            allowfullscreen
-          ></iframe>
-        </div>
-      )}
+      {popup.videos && popup.videos.map((video, index) => (
+        <div key={index}>
+          <h1 className="text-lg font-semibold">{video.title}</h1>
+          <h1 className="text-base">{video.desc}</h1>
+          </div>
+      ))}
     </div>
   </>
 )}
