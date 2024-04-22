@@ -25,6 +25,7 @@ const Course = () => {
         axios
           .get(`${backend}/courses/fetch/0`)
           .then((res) => {
+            // conosle.log(res.data[0]);
             let copy = [...res.data];
             copy.forEach((course) => {
               course.authorImage = 'undraw_next_js_-8-g5m.svg';
@@ -50,15 +51,18 @@ const Course = () => {
 
   const displayPopup = (index) => () => {
     let popupData = {};
-  popupData._id = courses[index]._id;
-  popupData.name = courses[index].name;
-  popupData.description = courses[index].description;
-  popupData.price = courses[index].price;
-  popupData.tags = courses[index].tags;
-  popupData.long_description = courses[index].long_description;
-  popupData.videos = null;
-
-    setPopup(courses[index]);
+    popupData._id = courses[index]._id;
+    popupData.name = courses[index].name;
+    popupData.description = courses[index].description;
+    popupData.price = courses[index].price;
+    popupData.tags = courses[index].tags;
+    popupData.long_description = courses[index].long_description;
+    popupData.language = courses[index].language; // assuming the course object has a language property
+    popupData.difficulty = courses[index].difficulty; // assuming the course object has a difficulty property
+    popupData.youtubeVideoUrl = courses[index].youtubeVideoUrl; // assuming the course object has a youtubeVideoUrl property
+    popupData.videos = null;
+  
+    setPopup(popupData);
   };
 
     const [currentPage, setCurrentPage] = useState(1)
@@ -114,7 +118,9 @@ const Course = () => {
               <p className="text-secondary">
                 Price: <span className="font-bold">${course.price}</span>
               </p>
+              <div onClick={(e)=> e.stopPropagation()}>
               <Pay courseId={course._id} bought={course.bought} />
+              </div>
               <div className="tags">
                 {course.tags.map((tag, index) => (
                   <span key={index} className="tag text-gray-400 italic">
@@ -132,20 +138,29 @@ const Course = () => {
         {popup && (
   <>
     <div className="fixed inset-0 bg-black opacity-50"></div>
-    <div className="  fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5 z-10 w-4/5 max-w-lg rounded-lg shadow-lg bg-bg-contrast">
-      <button className="float-right" onClick={() => setPopup(null)}><IoClose />
-</button>
+    <div className="fixed top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 p-5 z-10 w-4/5 max-w-lg rounded-lg shadow-lg bg-bg-contrast">
+      <button className="float-right" onClick={() => setPopup(null)}><IoClose /></button>
       <h2 className="text-2xl font-bold mb-2">{popup.name}</h2>
       <p className="text-base">{popup.description}</p>
-      <p className="text-base">Price : {popup.price}</p>
+      <p className="text-base">{popup.price}</p>
       <p className="text-base">{popup.tags.join(', ')}</p>
       <p className="text-base">{popup.long_description}</p>
-      {/* Display videos if they exist */}
-      {popup.videos && popup.videos.map((video, index) => (
-        <div key={index}>
-          {/* Display video details */}
+      <p className="text-base">Language: {popup.language}</p>
+      <p className="text-base">Difficulty: {popup.difficulty}</p>
+      {/* Display YouTube video if it exists */}
+      {popup.youtubeVideoUrl && (
+        <div>
+          <iframe
+            width="560"
+            height="315"
+            src={popup.youtubeVideoUrl}
+            title="YouTube video player"
+            frameborder="0"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowfullscreen
+          ></iframe>
         </div>
-      ))}
+      )}
     </div>
   </>
 )}
@@ -160,3 +175,66 @@ const Course = () => {
 }
 
 export default Course
+
+
+
+// import React, { useState, useEffect } from 'react'
+// import axios from 'axios'
+// import { backend } from '../../Links.js'
+// import { Modal } from 'react-bootstrap'
+
+// const Course = () => {
+//     const [courses, setCourses] = useState([])
+//     const [popup, setPopup] = useState(null)
+
+//     useEffect(() => {
+//         axios.get(`${backend}/courses/fetch/0`).then((response) => {
+//             setCourses(response.data)
+//         }).catch((error) => {
+//             console.error('Error fetching courses:', error)
+//         })
+//     }, [])
+
+//     const displayPopup = (index) => () => {
+//         setPopup(courses[index])
+//     }
+
+//     const handleClose = () => setPopup(null)
+
+//     return (
+//         <>
+//             {/* ... */}
+//             <div className="course-list">
+//                 {courses.map((course, index) => (
+//                     <div key={index} className="course-card" onClick={displayPopup(index)}>
+//                         <h2>{course.name}</h2>
+//                         <p>{course.description}</p>
+//                         <p>Price: ${course.price}</p>
+//                     </div>
+//                 ))}
+//             </div>
+//             {popup && (
+//                 <Modal show={true} onHide={handleClose}>
+//                     <Modal.Header closeButton>
+//                         <Modal.Title>{popup.name}</Modal.Title>
+//                     </Modal.Header>
+//                     <Modal.Body>
+//                         <p>{popup.description}</p>
+//                         <p>Price: ${popup.price}</p>
+//                         <p>Tags: {popup.tags.join(', ')}</p>
+//                         <p>{popup.long_description}</p>
+//                         {/* Display videos if they exist */}
+//                         {popup.videos && popup.videos.map((video, index) => (
+//                             <div key={index}>
+//                                 <h3>{video.title}</h3> 
+//                                 <video src={video.url} controls /> 
+//                             </div>
+//                         ))}
+//                     </Modal.Body>
+//                 </Modal>
+//             )}
+//         </>
+//     )
+// }
+
+// export default Course
